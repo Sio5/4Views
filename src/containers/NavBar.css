@@ -1,0 +1,18 @@
+.menuitems{
+    color: #ccc;
+}
+.manuitems:hover{
+    color: #fff;
+}
+
+.logo img{
+    max-height: 20px;
+    width: auto;
+}
+
+.fixed-top{
+    opacity: 0.9;
+} 
+.navbar-light .navbar-nav .nav-link{
+    color: white!important;
+}
