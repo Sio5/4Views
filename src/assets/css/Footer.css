@@ -1,0 +1,14 @@
+
+.hidden{
+    display: none;
+    visibility: hidden;
+}
+
+.dark {
+    background-color: #343a40;
+    justify-content: center;
+}
+.dark h3,
+.dark p {
+    color: #717171;
+}

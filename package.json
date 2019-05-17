@@ -4,12 +4,21 @@
   "private": true,
   "dependencies": {
     "@kunukn/react-collapse": "^2.0.10",
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
+    "emailjs": "^2.2.0",
+    "emailjs-com": "^2.3.2",
+    "i18next": "^15.0.7",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "i18next-xhr-backend": "^2.0.1",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-accessible-accordion": "^2.4.5",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
+    "react-i18next": "^10.5.2",
     "react-loading-order-with-animation": "^1.0.0",
     "react-router": "^4.3.1",
     "react-router-bootstrap": "^0.24.4",
@@ -17,7 +26,8 @@
     "react-scripts": "^2.1.8",
     "react-typist": "^2.0.5",
     "reactstrap": "^7.1.0",
-    "suneditor": "^2.10.1"
+    "suneditor": "^2.10.1",
+    "toastr": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

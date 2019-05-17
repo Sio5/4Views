@@ -1,130 +1,150 @@
-/* 
-// Logo change
-export function frame_menu(){
-  // Get the Value from input field. 
-  let frame = document.getElementById('preview');
-  let innerDoc = (frame.contentDocument) 
-                  ? frame.contentDocument 
-                  : frame.contentWindow.document;
+export function ebaygetcrossdata() {
+    let crossitem1 = document
+        .getElementById('crosssellid1')
+        .value;
+    let crossitem2 = document
+        .getElementById('crosssellid2')
+        .value;
+    let crossitem3 = document
+        .getElementById('crosssellid3')
+        .value;
 
-  // Get the logo.src and replace it by the input value
-  var change = innerDoc.querySelector('#menu'); 
-  console.log('New Logo Url', change)
+    var url = 'http://open.api.ebay.com/shopping?';
+    url += 'callname=GetMultipleItems';
+    url += '&appid=RuslanKr-forviews-PRD-2f2fb35bc-4bba6302';
+    url += '&version=967';
+    url += '&siteid=0'; // muss man kunden auswahlen lassen welches land fur currency
+    url += '&responseencoding=JSON';
+    url += '&REST-PAYLOAD';
+    url += '&ItemID=';
+    url += crossitem1;
+    url += ',';
+    url += crossitem2;
+    url += ',';
+    url += crossitem3;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "text/plain",
+            "responseType": "json"
+        }
+    }).then(response => {
+        return (response.json())
+
+    }).then(data => {
+        var crossgallery = Array
+            .from(document.querySelectorAll("#crossgallery a"))
+            .map(crossitems => crossitems.childNodes[1].src);
+
+        var crossgalleryIMG = Array
+            .from(document.querySelectorAll("#crossgallery a img"))
+            .map((img, i) => {
+                if (crossgallery[i]) {
+                    return (img.setAttribute("src", data.Item[i].PictureURL[0]))
+                }
+            })
+        var crossgalleryTitle = Array
+            .from(document.querySelectorAll("#crossgallery a h3"))
+            .map((h3, i) => {
+                if (crossgallery[i]) {
+                    return h3.innerHTML = data.Item[i].Title;
+                }
+            })
+        var crossgalleryPrice = Array
+            .from(document.querySelectorAll("#crosssellitem_price"))
+            .map((h4, i) => {
+                if (crossgallery[i]) {
+                    return h4.innerHTML = data.Item[i].ConvertedCurrentPrice.Value + '<sup>' + data.Item[i].ConvertedCurrentPrice.CurrencyID + '</sup>';
+                }
+            })
+            .catch(error => console.error(error));
+
+    });
+
+};
+
+export function changelogo() {
+
+    var logo = document
+        .getElementById("logourl")
+        .value;
+    if (logo !== '') {
+        document
+            .getElementById('logo')
+            .src = logo;
+    }
 }
-*/
 
+export function changegallery() {
 
+    var newimgURL = Array
+        .from(document.querySelectorAll('#menuitems > input'))
+        .map(imgdata => imgdata.value);
 
-// Logo change
-export function frame_logo(){
-    // Get the Value from input field. 
-    var logo = document.getElementById("logourl").value;	
-    console.log('Inputvalue', logo)
-    // Get the logo.src and replace it by the input value
-    var change = document.getElementById('logo').src = logo; 
-    console.log('New Logo Url', change)
-  }
-  // Logo change
-export function changegallery(){
-  // Get the Value from input field. 
-  let changeimg1 = document.getElementById("changeimg1").value;
-  let changeimg2 = document.getElementById("changeimg2").value;
-  let changeimg3 = document.getElementById("changeimg3").value;
-  let changeimg4 = document.getElementById("changeimg4").value;
-  let changeimg5 = document.getElementById("changeimg5").value;
-  let changeimg6 = document.getElementById("changeimg6").value;
-  let changeimg7 = document.getElementById("changeimg7").value;
-  let changeimg8 = document.getElementById("changeimg8").value;
-  	
-  // Get the logo.src and replace it by the input value
-  document.getElementById('img1').src = changeimg1; 
-  document.getElementById('img2').src = changeimg2; 
-  document.getElementById('img3').src = changeimg3; 
-  document.getElementById('img4').src = changeimg4; 
-  document.getElementById('img5').src = changeimg5; 
-  document.getElementById('img6').src = changeimg6; 
-  document.getElementById('img7').src = changeimg7; 
-  document.getElementById('img8').src = changeimg8; 
-  document.getElementById('thumb1').src = changeimg1; 
-  document.getElementById('thumb2').src = changeimg2; 
-  document.getElementById('thumb3').src = changeimg3; 
-  document.getElementById('thumb4').src = changeimg4; 
-  document.getElementById('thumb5').src = changeimg5; 
-  document.getElementById('thumb6').src = changeimg6; 
-  document.getElementById('thumb7').src = changeimg7; 
-  document.getElementById('thumb8').src = changeimg8;
+    //Replace Gallery Images & Thumbs src with new ones from Input fields.
+    Array
+        .from(document.querySelectorAll('#gallery img'))
+        .map((img, i) => {
+            if (newimgURL[i] !== '') {
+                return (img.setAttribute("src", newimgURL[i]))
+            } else {
+                return (img.setAttribute("src", ''))
+            }
+        });
+    Array
+        .from(document.querySelectorAll('#gallery .ThumbNav img'))
+        .map((img, i) => {
+            if (newimgURL[i] !== '') {
+                return (img.setAttribute("src", newimgURL[i]))
+            } else {
+                return (img.setAttribute("src", ''))
+            }
+        });
+};
+
+export function shipping() {
+
+    let customshipping = document
+        .getElementById('customshipping')
+        .value;
+    if (customshipping !== '') {
+        document
+            .getElementById("customship")
+            .setAttribute('src', customshipping);
+    }
 }
-export function shipping(){
 
-  let shipping_dhl = document.getElementById("dhl").checked;
-  let shipping_dpd = document.getElementById("dpd").checked;
-  let shipping_hermes = document.getElementById("hermes").checked;
-  let customshipping = document.getElementById('customshipping').value;
+export function updatepaymenth() {
+    var paymenthName = Array
+        .from(document.querySelectorAll('#paymenthInputs input'))
+        .map(nameofin => nameofin.attributes[2].value);
 
-  if (shipping_dhl === true){
-      document.getElementById("shipping_dhl").setAttribute('style', 'display:inline-block;');
+    var paymenthChecked = Array
+        .from(document.querySelectorAll('#paymenthInputs input'))
+        .map(nameofin => nameofin.checked);
 
-  } else {
-      document.getElementById("shipping_dhl").setAttribute('style', 'display:none;');
-  };
-  if (shipping_dpd === true){
-    document.getElementById("shipping_dpd").setAttribute('style', 'display:inline-block;');
+    Array
+        .from(document.querySelectorAll('#paybox span'))
+        .map((span, i) => {
+            if (paymenthChecked[i] === true) {
+                return (document.getElementById("pay_" + paymenthName[i]).setAttribute('style', 'display:block;'))
+            } else {
+                return (document.getElementById("pay_" + paymenthName[i]).setAttribute('style', 'display:none;'))
+            }
+        });
+    //Updathe the Paymenths the User has selected and hide the unselected ones.
 
-  } else {
-      document.getElementById("shipping_dpd").setAttribute('style', 'display:none;');
-  };
-  if (shipping_hermes === true){
-    document.getElementById("shipping_hermes").setAttribute('style', 'display:inline-block;');
-  
-  } else {
-    document.getElementById("shipping_hermes").setAttribute('style', 'display:none;');
-  };
-  document.getElementById("customship").setAttribute('src', customshipping);
-  }
+}
 
-  export function paymenth(){
-    let pay_paypal = document.getElementById("paypal").checked;
-    let pay_bank = document.getElementById("bank").checked;
-    let pay_cc = document.getElementById("cc").checked;
-    let pay_cash = document.getElementById("cash").checked;
-
-    if (pay_paypal === true) {
-      document.getElementById("pay_paypal").setAttribute('style', 'display:block;');
-    } else {
-      document.getElementById("pay_paypal").setAttribute('style', 'display:none;');
-    }
-    if (pay_bank === true) {
-      document.getElementById("pay_bank").setAttribute('style', 'display:block;');
-    } else {
-      document.getElementById("pay_bank").setAttribute('style', 'display:none;');
-    }
-    if (pay_cc === true) {
-      document.getElementById("pay_cc").setAttribute('style', 'display:block;');
-    } else {
-      document.getElementById("pay_cc").setAttribute('style', 'display:none;');
-    }
-    if (pay_cash === true) {
-      document.getElementById("pay_cash").setAttribute('style', 'display:block;');
-    } else {
-      document.getElementById("pay_cash").setAttribute('style', 'display:none;');
-    }
-
-  }
-
-  export function downloadtemplate() {
+export function downloadtemplate() {
     var base64doc = btoa(unescape(encodeURIComponent(document.getElementById('textsave').value))),
         a = document.createElement('a'),
         e = new MouseEvent('click');
-  
+
     a.download = '4views.html';
     a.href = 'data:text/html;base64,' + base64doc;
     a.dispatchEvent(e);
-  }
+}
 
-  // Refresh the Iframe Content, important for new Import.
-export function refresh(){ 
-    var textContent = document.getElementById('editor-textarea').value;
-    document.getElementById('preview').srcdoc = textContent;
-    };
-  
-  
+
