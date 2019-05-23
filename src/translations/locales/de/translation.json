@@ -36,10 +36,11 @@
     "preview": "ansehen",
     "fileupload": "Hochladen",
     "ebayitemid": "eBay ArtikelNr.",
-    "crosssellingtext": "Fügen Sie unten die eBay Artikelnummern der Produkten die in der Besteller Galerie angezeigt werden sollen.",
+    "crosssellingtext": "Fügen Sie unten die eBay Artikelnummern der Produkten die in der Bestseller Galerie angezeigt werden sollen.",
     "WBtitle": "Bitte nutzen Sie Mozilla Firefox.",
     "WBtext": "Für eine benutzerfreundlichere und bessere funktionalität unseres Editors bitte nutzen Sie den Browser Mozilla Firefox. Diesen können Sie auf der Offizielen Seite kostenfrei herunterladen.",
-    "WBfirefox": "Kostenfrei herunterladen."
+    "WBfirefox": "Kostenfrei herunterladen.",
+    "ebaycountry": "Bitte wählen Sie den eBay Markplatz aus, auf welchem ihre Artikel gelistet sind."
 
 
 }

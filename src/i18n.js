@@ -27,10 +27,10 @@ i18n
     .init({
         resources, lng: lang, fallbackLng: "en_EN", // use en if detected lng is not available
 
-        keySeparator: false, // we do not use keys in form messages.welcome
+        keySeparator: false, 
 
         interpolation: {
-            escapeValue: false // react already safes from xss
+            escapeValue: false
         }
     });
 

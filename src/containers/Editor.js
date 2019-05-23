@@ -19,8 +19,6 @@ import de from 'suneditor/src/lang/de';
 import '../i18n';
 import {t} from 'i18next'
 
-
-var count = 1;
 var editor;
 // Handle Upload of Html Template
 function handleFileSelect(evt) {
@@ -71,10 +69,6 @@ function createEditor() {
             ['preview']
         ],
         lang: (de),
-        // Callback functions that is called when the Save button is clicked
-        callBackSave: function (contents) {
-            alert(contents)
-        }
 
     })
 
@@ -116,7 +110,7 @@ export default class Editor extends Component {
     }
 
     render() {
-
+        let count = 1;
         return (
 
             <div className="editorcontainer">
@@ -126,10 +120,13 @@ export default class Editor extends Component {
                     className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>{t('WBtitle')}</ModalHeader>
                     <ModalBody>
-                    {t('WBtext')}
+                        {t('WBtext')}
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="editor" href="https://www.mozilla.org/firefox/new/" target="_blank">{t('WBfirefox')}</Button>
+                        <Button
+                            color="editor"
+                            href="https://www.mozilla.org/firefox/new/"
+                            target="_blank">{t('WBfirefox')}</Button>
                         <Button color="editor" onClick={this.toggle}>{t('close')}</Button>
                     </ModalFooter>
                 </Modal>
@@ -137,7 +134,7 @@ export default class Editor extends Component {
                     <NavBar/>
                 </div>
                 <div className="row Editorcon">
-                    <div className="col-3 editorgrid">
+                    <div className="col-xl-3 col-xs-12 col-sm-12 col-md-3 editorgrid">
                         <Accordion>
                             <AccordionItem expanded={true}>
                                 <AccordionItemTitle>
@@ -172,14 +169,14 @@ export default class Editor extends Component {
                                         <form id="menuitems">
                                             <p>{t('gallerytext')}
                                             </p>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
-                                            <input type="url" placeholder={'URL ' + count++}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
+                                            <input type="url" placeholder={`URL ${count++}`}/>
                                             <Button color="editor" onClick={changegallery}>{t('change')}</Button>
                                         </form>
                                     </div>
@@ -245,7 +242,19 @@ export default class Editor extends Component {
                                         <input type="text" id="crosssellid1" placeholder={t('ebayitemid')}/>
                                         <input type="text" id="crosssellid2" placeholder={t('ebayitemid')}/>
                                         <input type="text" id="crosssellid3" placeholder={t('ebayitemid')}/>
-                                        <Button color="editor" onClick={ebaygetcrossdata}>{t('change')}</Button>
+                                    </div>
+                                    <div className="row save crossselling">
+                                         <p>{t('ebaycountry')}</p>
+                                        <select id="ebaycountry">
+                                            <option value="0">eBay USA</option>
+                                            <option value="3">eBay UK</option>
+                                            <option value="77">eBay Deuschland</option>
+                                            <option value="15">eBay Östereich</option>
+                                            <option value="71">eBay France</option>
+                                        </select>
+                                    </div>
+                                    <div className="row pay">
+                                    <Button color="editor" onClick={ebaygetcrossdata}>{t('change')}</Button>
                                     </div>
                                 </AccordionItemBody>
                             </AccordionItem>
@@ -264,7 +273,7 @@ export default class Editor extends Component {
                         </Accordion>
 
                     </div>
-                    <div className="col-9 editorgrid">
+                    <div className="col-xl-9 col-xs-12 col-sm-12 col-md-9 editorgrid">
 
                         <textarea id="sample" className="sample"></textarea>
 

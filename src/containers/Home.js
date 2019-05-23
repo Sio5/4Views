@@ -16,6 +16,7 @@ import greyvologo from '../assets/img/greyvologo.jpg'
 import '../i18n';
 import {t} from 'i18next'
 import {Link} from 'react-router-dom';
+
 export default class Home extends Component {
 
     constructor(props) {
@@ -58,12 +59,13 @@ export default class Home extends Component {
                     <div className="preText">
                         <div className="row customrow">
                             <div className="col">
-                            <h1 className="preTextH1"> <Typist
-                                    cursor={{
-                                    blink: true,
-                                    element: '_'
-                                }}
-                                    >{t('title')}</Typist></h1>
+                                <h1 className="preTextH1">
+                                    <Typist
+                                        cursor={{
+                                        blink: true,
+                                        element: '_'
+                                    }}>{t('title')}</Typist>
+                                </h1>
                                 <LoadingOrderAnimation
                                     animation="fade-in"
                                     move="from-bottom-to-top"
@@ -121,7 +123,7 @@ export default class Home extends Component {
                             </span>
                         </div>
                         <div className="col-xl-5 col-xs-12 col-sm-12 col-md-6">
-                            <img className="greyvoimg"  src={Greyvo} alt="Greyvo"/>
+                            <img className="greyvoimg" src={Greyvo} alt="Greyvo"/>
                         </div>
                         <div className="col-xl-2 col-xs-0 col-sm-0 col-md-1"></div>
                     </div>
@@ -129,7 +131,7 @@ export default class Home extends Component {
                     <div className="row">
                         <div className="col-xl-2 col-xs-0 col-sm-0 col-md-1"></div>
                         <div className="col-xl-5 col-xs-12 col-sm-12 col-md-5"><img className="counterimg" src={Counter} alt="Counter"/></div>
-                        <div className="col-xl-3 col-xs-12 col-sm-12 col-md-3">
+                        <div className="col-xl-4 col-xs-12 col-sm-12 col-md-5">
                             <img src={Counterlogo} alt="Counter"/>
                             <h3>{t('counterapp')}</h3>
                             <p className="opacolor">{t('counterpromo')}</p>
@@ -153,4 +155,3 @@ export default class Home extends Component {
         );
     }
 }
-

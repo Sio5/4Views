@@ -39,6 +39,7 @@
     "crosssellingtext": "Add here the eBay Item IDs of Products you would like to display in Bestseller Gallery.",
     "WBtitle": "Please use Mozilla Firefox.",
     "WBtext": "For a more user-friendly and better functionality of our editor please use the browser Mozilla Firefox, which you can download for free on the official website.",
-    "WBfirefox": "Download free."
+    "WBfirefox": "Download free.",
+    "ebaycountry": "Please select eBay Country ID, where your Items are Listed on."
 
 }

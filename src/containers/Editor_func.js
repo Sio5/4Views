@@ -8,20 +8,17 @@ export function ebaygetcrossdata() {
     let crossitem3 = document
         .getElementById('crosssellid3')
         .value;
+    let siteid = document.getElementById('ebaycountry');
+    let siteidselected = siteid.options[siteid.selectedIndex].value;
 
     var url = 'http://open.api.ebay.com/shopping?';
     url += 'callname=GetMultipleItems';
     url += '&appid=RuslanKr-forviews-PRD-2f2fb35bc-4bba6302';
     url += '&version=967';
-    url += '&siteid=0'; // muss man kunden auswahlen lassen welches land fur currency
+    url += `&siteid=${siteidselected}`;
     url += '&responseencoding=JSON';
     url += '&REST-PAYLOAD';
-    url += '&ItemID=';
-    url += crossitem1;
-    url += ',';
-    url += crossitem2;
-    url += ',';
-    url += crossitem3;
+    url += `&ItemID=${crossitem1},${crossitem2},${crossitem3}`;
 
     fetch(url, {
         method: 'GET',
@@ -55,7 +52,7 @@ export function ebaygetcrossdata() {
             .from(document.querySelectorAll("#crosssellitem_price"))
             .map((h4, i) => {
                 if (crossgallery[i]) {
-                    return h4.innerHTML = data.Item[i].ConvertedCurrentPrice.Value + '<sup>' + data.Item[i].ConvertedCurrentPrice.CurrencyID + '</sup>';
+                    return h4.innerHTML = `${data.Item[i].ConvertedCurrentPrice.Value}<sup>${data.Item[i].ConvertedCurrentPrice.CurrencyID}</sup>`;
                 }
             })
             .catch(error => console.error(error));
@@ -115,6 +112,7 @@ export function shipping() {
     }
 }
 
+//Updathe the Paymenths the User has selected and hide the unselected ones.
 export function updatepaymenth() {
     var paymenthName = Array
         .from(document.querySelectorAll('#paymenthInputs input'))
@@ -133,7 +131,6 @@ export function updatepaymenth() {
                 return (document.getElementById("pay_" + paymenthName[i]).setAttribute('style', 'display:none;'))
             }
         });
-    //Updathe the Paymenths the User has selected and hide the unselected ones.
 
 }
 
@@ -143,8 +140,6 @@ export function downloadtemplate() {
         e = new MouseEvent('click');
 
     a.download = '4views.html';
-    a.href = 'data:text/html;base64,' + base64doc;
+    a.href = `data:text/html;base64,${base64doc}`;
     a.dispatchEvent(e);
 }
-
-
