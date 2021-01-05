@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@kunukn/react-collapse": "^2.0.10",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.3.1",
     "emailjs": "^2.2.0",
